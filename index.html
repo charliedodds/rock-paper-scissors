@@ -1,68 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
-</head>
-<body>
-    
-    <script>
-
-        function computerChoose(){
-            const random3 = Math.floor(Math.random() * 3) + 1;
-            switch(random3){
-                case 1:
-                    return "rock";
-                    break;
-                case 2:
-                    return "paper";
-                    break;
-                case 3:
-                    return "scissors";
-                    break;
-                default:
-                    console.log("Something went wrong");
-            }
-        }
-
-        function playerChoose(){
-            return prompt("Rock, Paper or Scissors?").toLowerCase();
-        }
-
-        function decideWinner(playerChoice, computerChoice){
-            const PLAYER_WINS = "You win!";
-            const COMP_WINS = "The Computer wins!";
-            const TIE = "It's a tie! Try again."
-
-            if (playerChoice === computerChoice){
-                return TIE;
-            } else if (playerChoice === "rock"){
-                return (computerChoice === "scissors") ? PLAYER_WINS : COMP_WINS;
-            } else if (playerChoice === "paper"){
-                return (computerChoice === "rock") ? PLAYER_WINS : COMP_WINS;
-            } else if (playerChoice === "scissors"){
-                return (computerChoice === "paper") ? PLAYER_WINS : COMP_WINS;
-            }
-        }
-
-        function playRPS(playerChoiceFunc, computerChoiceFunc){
-            const playerChoice = playerChoiceFunc();
-            const computerChoice = computerChoiceFunc();
-
-            let winState = decideWinner(playerChoice, computerChoice);
-
-            console.log(`You chose ${playerChoice} and the computer chose ${computerChoice}. ${winState}`);
-        }
-
-        function game(){
-            playRPS(playerChoose, computerChoose);
-        }
-
-        for (let i = 0; i < 5; i++) {
-            game();
-        }
-
-    </script>
-</body>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>Pokemon-inspired Rock Paper Scissors</h1>
+    <h2>Choose your fighter:</h2>
+    <div class="buttons">
+      <button>Bulbasaur</button>
+      <button>Squirtle</button>
+      <button>Charmander</button>
+    </div>
+    <div class="result-container">
+      <p class="result"></p>
+    </div>
+    <script src="/index.js"></script>
+  </body>
 </html>

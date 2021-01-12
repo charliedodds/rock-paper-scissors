@@ -1,3 +1,14 @@
+let playerScore = 0;
+let computerScore = 0;
+let isGameOver = false;
+
+function checkGameOver() {
+  if (playerScore >= 5 || computerScore >= 5) {
+    isGameOver = true;
+    console.log(isGameOver);
+  }
+}
+
 function computerChoose() {
   const random3 = Math.floor(Math.random() * 3) + 1;
   switch (random3) {
@@ -46,11 +57,29 @@ function decideWinner(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
     return TIE;
   } else if (playerChoice === "Bulbasaur") {
-    return computerChoice === "Squirtle" ? PLAYER_WINS : COMP_WINS;
+    if (computerChoice === "Squirtle") {
+      playerScore++;
+      return PLAYER_WINS;
+    } else {
+      computerScore++;
+      return COMP_WINS;
+    }
   } else if (playerChoice === "Charmander") {
-    return computerChoice === "Bulbasaur" ? PLAYER_WINS : COMP_WINS;
+    if (computerChoice === "Bulbasaur") {
+      playerScore++;
+      return PLAYER_WINS;
+    } else {
+      computerScore++;
+      return COMP_WINS;
+    }
   } else if (playerChoice === "Squirtle") {
-    return computerChoice === "Charmander" ? PLAYER_WINS : COMP_WINS;
+    if (computerChoice === "Charmander") {
+      playerScore++;
+      return PLAYER_WINS;
+    } else {
+      computerScore++;
+      return COMP_WINS;
+    }
   }
 }
 
@@ -97,10 +126,27 @@ function newRound() {
 function game() {
   playRPS(computerChoose);
   document.body.removeEventListener("click", checkClick);
-  const anotherRound = document.querySelector(".try-again");
-  const tryAgain = document.createElement("button");
-  tryAgain.classList.add("try-again-btn");
-  tryAgain.innerText = "Play again?";
-  tryAgain.addEventListener("click", () => newRound());
-  anotherRound.appendChild(tryAgain);
+  checkGameOver();
+  if (!isGameOver) {
+    const anotherRound = document.querySelector(".try-again");
+    const tryAgain = document.createElement("button");
+    tryAgain.classList.add("try-again-btn");
+    tryAgain.innerText = "Play again?";
+    tryAgain.addEventListener("click", () => newRound());
+    anotherRound.appendChild(tryAgain);
+  } else {
+    const p = document.createElement("p");
+    p.classList.add("winner");
+    p.innerText = "GAME OVER!";
+    const resultContainer = document.querySelector(".result-container");
+    resultContainer.appendChild(p);
+    const button = document.createElement("button");
+    button.innerText = "Reset";
+    button.addEventListener("click", () => {
+      playerScore = 0;
+      computerScore = 0;
+      isGameOver = false;
+    });
+    resultContainer.appendChild(button);
+  }
 }

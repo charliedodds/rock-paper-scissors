@@ -8,41 +8,44 @@
     <link rel="shortcut icon" href="pokeball.png" type="image/x-icon" />
   </head>
   <body>
-    <div class="logo">
+    <header class="logo">
       <img src="pokelogo.png" alt="" />
-    </div>
-    <h1 id="title">Rock Paper Scissors</h1>
-    <h2 id="subtitle">Choose your fighter:</h2>
-    <div class="buttons">
-      <div class="pokemon bulbasaur">
-        <img
-          class="pokemon-img bulbasaur"
-          src="bulbasaur.png"
-          alt="bulbasaur"
-        />
-        <p class="pokemon-button bulbasaur">Bulbasaur</p>
+    </header>
+    <main class="main-container">
+      <h1 id="title">Rock Paper Scissors</h1>
+      <h2 id="subtitle">Choose your fighter:</h2>
+      <div class="buttons">
+        <div class="pokemon bulbasaur">
+          <img
+            class="pokemon-img bulbasaur"
+            src="bulbasaur.png"
+            alt="bulbasaur"
+          />
+          <p class="pokemon-button bulbasaur">Bulbasaur</p>
+        </div>
+        <div class="pokemon charmander">
+          <img
+            class="pokemon-img charmander"
+            src="charmander.png"
+            alt="charmander"
+          />
+          <p class="pokemon-button charmander">Charmander</p>
+        </div>
+        <div class="pokemon squirtle">
+          <img class="pokemon-img squirtle" src="squirtle.png" alt="squirtle" />
+          <p class="pokemon-button squirtle">Squirtle</p>
+        </div>
       </div>
-      <div class="pokemon charmander">
-        <img
-          class="pokemon-img charmander"
-          src="charmander.png"
-          alt="charmander"
-        />
-        <p class="pokemon-button charmander">Charmander</p>
+      <div class="computer-pokemon">
+        <img class="computer-pokeball shake" src="pokeball.png" />
       </div>
-      <div class="pokemon squirtle">
-        <img class="pokemon-img squirtle" src="squirtle.png" alt="squirtle" />
-        <p class="pokemon-button squirtle">Squirtle</p>
+      <div class="result-container">
+        <p class="result"></p>
+        <p class="winner"></p>
       </div>
-    </div>
-    <div class="computer-pokemon">
-      <img class="computer-pokeball shake" src="pokeball.png" />
-    </div>
-    <div class="result-container">
-      <p class="result"></p>
-      <p class="winner"></p>
-    </div>
-    <div class="try-again"></div>
+      <div class="try-again"></div>
+    </main>
+
     <script src="/index.js"></script>
   </body>
 </html>

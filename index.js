@@ -21,7 +21,14 @@ const pokemonDivs = document.querySelector(".buttons");
 
 function checkClick(e) {
   if (pokemonDivs.contains(e.target)) {
-    let pokemon = e.target.classList[e.target.classList.length - 1].split("");
+    let pokemon = e.target.classList[e.target.classList.length - 1];
+    let allPokemon = document.querySelectorAll(".pokemon");
+    allPokemon.forEach((div) => {
+      if (div.classList[div.classList.length - 1] !== pokemon) {
+        div.style.display = "none";
+      }
+    });
+    pokemon = pokemon.split("");
     pokemon[0] = pokemon[0].toUpperCase();
     pokemon = pokemon.join("");
     playerChoice = pokemon;
@@ -82,6 +89,9 @@ function newRound() {
   anotherRound.removeChild(document.querySelector("button"));
   document.querySelector(".result").innerText = "";
   document.querySelector(".winner").innerText = "";
+  document.querySelectorAll(".pokemon").forEach((div) => {
+    div.style.display = "block";
+  });
 }
 
 function game() {

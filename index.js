@@ -89,6 +89,7 @@ function game() {
   document.body.removeEventListener("click", checkClick);
   const anotherRound = document.querySelector(".try-again");
   const tryAgain = document.createElement("button");
+  tryAgain.classList.add("try-again-btn");
   tryAgain.innerText = "Play again?";
   tryAgain.addEventListener("click", () => newRound());
   anotherRound.appendChild(tryAgain);

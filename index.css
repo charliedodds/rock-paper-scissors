@@ -1,0 +1,155 @@
+@font-face {
+  font-family: pokeFont;
+  src: url(/PKMN\ RBYGSC.ttf);
+}
+
+:root {
+  --pokemon-yellow: #ffde00;
+  --pokemon-dark-yellow: #b3a125;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: pokeFont;
+  background-color: var(--pokemon-yellow);
+  margin: 0;
+  padding: 0;
+  font-size: 1.4rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+.logo {
+  display: flex;
+  width: 80%;
+  margin: 2rem auto;
+}
+
+#title {
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+#subtitle {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.pokemon {
+  text-align: center;
+  background-color: #eee;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  transition: 500ms;
+  box-shadow: var(--pokemon-dark-yellow) 0 2px 10px;
+}
+
+.pokemon:first-of-type {
+  margin-left: 1rem;
+  margin-right: 0.25rem;
+}
+
+.pokemon:last-of-type {
+  margin-right: 1rem;
+  margin-left: 0.25rem;
+}
+
+.pokemon:hover {
+  transform: scale(1.1);
+  box-shadow: #9b8a1e 0 3px 13px;
+}
+
+.pokemon-img {
+  width: 70%;
+  margin: 0.5rem;
+}
+
+.pokemon-button {
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  margin: 0.5rem;
+}
+
+.computer-pokemon {
+  margin: 3rem;
+}
+
+.computer-pokeball {
+  width: 25%;
+  display: block;
+  margin: auto;
+  transition: 1s;
+}
+
+.shake {
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  20%,
+  80% {
+    transform: rotate(5deg);
+  }
+
+  25%,
+  75% {
+    transform: rotate(-10deg);
+  }
+
+  35%,
+  50%,
+  65% {
+    transform: rotate(10deg);
+  }
+
+  40%,
+  60% {
+    transform: rotate(-5deg);
+  }
+}
+
+.result-container {
+  max-width: 80%;
+  margin: auto;
+}
+
+.winner {
+  text-align: center;
+}
+
+.grow {
+  animation: grow 0.5s ease-in-out forwards;
+}
+
+@keyframes grow {
+  80% {
+    transform: scale(1.75);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+.try-again {
+  text-align: center;
+}

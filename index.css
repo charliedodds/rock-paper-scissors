@@ -173,11 +173,12 @@ p {
   justify-content: center;
 }
 button {
-  padding: 1rem;
+  padding: 2rem;
   background-color: var(--pokemon-dark-yellow);
   border-radius: 0.5rem;
   border: none;
   margin: 0 auto 2rem;
+  font-size: 1.5rem;
 }
 
 .chosen {
@@ -188,4 +189,18 @@ button {
 #score {
   text-align: center;
   padding-bottom: 2rem;
+}
+
+@media (min-width: 599.98px) {
+  html {
+    font-size: 16px;
+  }
+  .buttons {
+    max-width: 1000px;
+    margin: auto;
+    padding: 3rem;
+  }
+  .computer-pokemon {
+    margin: 3rem 18rem;
+  }
 }

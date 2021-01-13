@@ -55,15 +55,13 @@ function checkClick(e) {
     pokemon = pokemon.join("");
     playerChoice = pokemon;
     game();
-    setScore();
   }
 }
 
 function decideWinner(playerChoice, computerChoice) {
   const PLAYER_WINS = "You win!";
   const COMP_WINS = "The Computer wins!";
-  const TIE = "It's a tie! Try again.";
-
+  const TIE = "It's a tie!";
   if (playerChoice === computerChoice) {
     return TIE;
   } else if (playerChoice === "Bulbasaur") {
@@ -127,6 +125,7 @@ function game() {
   playRPS(computerChoose);
   body.removeEventListener("click", checkClick);
   checkGameOver();
+  setScore();
   if (!isGameOver) {
     newButton.classList.add("try-again-btn");
     newButton.innerText = "Play again?";
@@ -137,18 +136,19 @@ function game() {
     p.innerText = "GAME OVER!";
     resultContainer.appendChild(p);
     newButton.innerText = "Reset";
-    newButton.addEventListener("click", reset);
+    newButton.addEventListener("click", resetGame);
     resultContainer.appendChild(newButton);
   }
 }
 
-function reset() {
-  playerScore = 0;
-  computerScore = 0;
-  isGameOver = false;
-  resetBoard();
-  resultContainer.childNodes.forEach((p) => (p.innerText = ""));
-  score.innerText = "";
+function resetGame() {
+  if (isGameOver) {
+    score.innerText = "";
+    playerScore = 0;
+    computerScore = 0;
+    isGameOver = false;
+    resetBoard();
+  }
 }
 
 function setScore() {
@@ -164,4 +164,8 @@ function resetBoard() {
   });
   resultContainer.childNodes.forEach((p) => (p.innerText = ""));
   body.addEventListener("click", checkClick);
+}
+
+function clearClicks() {
+  document.querySelector("button").removeEventListener("click", resetGame);
 }

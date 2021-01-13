@@ -127,6 +127,9 @@ function game() {
   playRPS(computerChoose);
   document.body.removeEventListener("click", checkClick);
   checkGameOver();
+  document.querySelector(
+    "#score"
+  ).innerText = `Player: ${playerScore} - Computer: ${computerScore}`;
   if (!isGameOver) {
     const anotherRound = document.querySelector(".try-again");
     const tryAgain = document.createElement("button");
@@ -142,11 +145,24 @@ function game() {
     resultContainer.appendChild(p);
     const button = document.createElement("button");
     button.innerText = "Reset";
-    button.addEventListener("click", () => {
-      playerScore = 0;
-      computerScore = 0;
-      isGameOver = false;
-    });
+    button.addEventListener("click", reset);
     resultContainer.appendChild(button);
   }
+}
+
+function reset() {
+  playerScore = 0;
+  computerScore = 0;
+  isGameOver = false;
+  pokeball.classList.add("shake");
+  pokeball.classList.remove("grow");
+  pokeball.src = "pokeball.png";
+  document.querySelectorAll(".pokemon").forEach((div) => {
+    div.style.display = "block";
+  });
+  document.querySelectorAll("p").forEach((p) => (p.innerText = ""));
+  const resultContainer = document.querySelector(".result-container");
+  resultContainer.removeChild(document.querySelector("button"));
+  document.body.addEventListener("click", checkClick);
+  document.querySelector("#score").innerText = "";
 }
